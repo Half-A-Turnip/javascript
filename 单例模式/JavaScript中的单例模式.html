@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var MyApp = {};
+        MyApp.namespace = function(name) {
+            var parts = name.split('.');
+            var current = MyApp;
+            for (var i in parts) {
+                if (!current[parts[i]]) {
+                    current[parts[i]] = {};
+                }
+                current = current[parts[i]]
+            }
+        }
+        MyApp.namespace('event')
+        MyApp.namespace('dom.style')
+        console.log(MyApp);
+    </script>
+    <script>
+        var user = (function() {
+            var _name = "seven",
+                _age = 29;
+            return {
+                getUserInfo: function() {
+                    return _name + '-' + _age;
+                }
+            }
+        })();
+        console.log(user.getUserInfo());
+    </script>
+</body>
+
+</html>

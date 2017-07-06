@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<button id="btn">惦记我</button>
+
+<body>
+    <script src="./jquery-1.11.3.js"></script>
+    <script>
+        var getUserInfo = function(userId, callback) {
+            $.ajax("./user.php?userId=" + userId, function(data) {
+                if (typeof callback === "function") {
+                    callback(data);
+                }
+            })
+        }
+        $('#btn').click(function() {
+            getUserInfo(1213, function(data) {
+                alert(data);
+            })
+        })
+    </script>
+</body>
+
+</html>

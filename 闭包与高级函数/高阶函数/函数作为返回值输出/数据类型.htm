@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var isType = function(type) {
+            return function(obj) {
+                console.log(Object.prototype.toString.call(obj));
+                console.log(type);
+                return Object.prototype.toString.call(obj) === '[object ' + type + ']';
+            }
+        };
+        var isString = isType('String');
+        var isArray = isType('Array');
+        var isNumber = isType('Number');
+
+        console.log(isString("123"));
+    </script>
+</body>
+
+</html>

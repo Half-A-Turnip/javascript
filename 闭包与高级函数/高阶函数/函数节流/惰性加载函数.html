@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div1">点我绑定惰性加载</div>
+    <script>
+        var addEvent = function(elem, type, handler) {
+            if (window.addEventListener) {
+                addEvent = function(elem, type, handler) {
+                    elem.addEventListener(type, handler, false)
+                }
+            } else if (window.attachEvent) {
+                addEvent = function(elem, type, handler) {
+                    elem.addEventListener("on" + type, handler)
+                }
+            }
+            addEvent(elem, type, handler);
+        }
+        var div = document.getElementById("div1");
+
+        addEvent(div, 'click', function() {
+            console.log("123")
+        })
+        addEvent(div, 'click', function() {
+            console.log("3")
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //定义各自的方法
+        var performaceS = function() {}
+        performaceS.prototype.calculate = function(salary) {
+            return salary * 4;
+        }
+        var performaceB = function() {}
+        performaceB.prototype.calculate = function(salary) {
+            return salary * 3;
+        }
+        var performaceA = function() {}
+        performaceA.prototype.calculate = function(salary) {
+            return salary * 2;
+        }
+
+        var Bouns = function() {
+            this.salary = null; //原始工资
+            this.strategy = null; //绩效对用的策略
+        }
+
+        Bouns.prototype.setSalary = function(salary) {
+            this.salary = salary; //设置原始工资
+        }
+        Bouns.prototype.setStrategy = function(strategy) {
+            this.strategy = strategy; //设置策略
+        }
+        Bouns.prototype.getBons = function() {
+            return this.strategy.calculate(this.salary);
+        }
+
+        var bouns = new Bouns();
+        bouns.setSalary(1000);
+        bouns.setStrategy(new performaceS()); //设置策略对象
+        console.log(bouns.getBons());
+        bouns.setSalary(1000);
+        bouns.setStrategy(new performaceA());
+        console.log(bouns.getBons());
+    </script>
+</body>
+
+</html>
